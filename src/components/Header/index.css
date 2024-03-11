@@ -1,0 +1,17 @@
+.header-container{
+    display: flex;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #d7dfe9;
+    padding-left: 30px;
+}
+
+.website-logo{
+    height: 60px;
+    width:60px;
+}
+.website-name{
+    font-size: 35px;
+    padding-left: 15px;
+
+}
