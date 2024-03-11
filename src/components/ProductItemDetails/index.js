@@ -15,7 +15,7 @@ class ProductItemDetails extends Component{
         }
         const response = await fetch(apiUrl, options)
         const data = await response.json()
-        console.log(data)
+        // console.log(data)
 
         const updatedData = {
             category:data.category,
