@@ -1,4 +1,5 @@
 import {Component} from 'react'
+import './index.css'
 
 class ProductItemDetails extends Component{
     state = {productItem:[]}
@@ -8,12 +9,7 @@ class ProductItemDetails extends Component{
       }
     
     getProductItemDetails = async () => {
-        const {match} = this.props
-        const {params} = match
-        const {id} = params
-        console.log(id)
-    
-        const apiUrl = `https://fakestoreapi.com/products/${id}`
+        const apiUrl = `https://fakestoreapi.com/products/1`
         const options = {
           method: 'GET',
         }
@@ -21,30 +17,32 @@ class ProductItemDetails extends Component{
         const data = await response.json()
         console.log(data)
 
-        const updatedData = data.map(each=>({
-            category:each.category,
-            description:each.description,
-            id:each.id,
-            imageUrl:each.image,
-            price:each.price,
-            rate:each.rating.rate,
-            count:each.rating.count,
-            title:each.title,
-        }))
+        const updatedData = {
+            category:data.category,
+            description:data.description,
+            id:data.id,
+            imageUrl:data.image,
+            price:data.price,
+            rate:data.rating.rate,
+            count:data.rating.count,
+            title:data.title,
+        }
         this.setState({productItem:updatedData})
     }
     render(){
         const {productItem} = this.state
         const{category,description,imageUrl,price,rate,count,title} = productItem
     return(
-        <div>
-            <img src={imageUrl} alt='product item'/>
-            <p>{title}</p>
-            <p>{description}</p>
-            <p>{category}</p>
-            <p>{price}</p>
-            <p>{rate}</p>
-            <p>{count}</p>
+        <div className='item-container'>
+            <img src={imageUrl} alt='product item' className='image-product'/>
+            <div>
+                <h1>{title}</h1>
+                <p>{description}</p>
+                <p>{category}</p>
+                <p>RS {price}</p>
+                <p>Rating: {rate}</p>
+                <p>Reviews: {count}</p>
+            </div>
         </div>
     )
         
